@@ -16,14 +16,20 @@ public class Oct extends SystemNum{
         System.out.println("Введите число: ");
         while (true) {
             String input = scanner.nextLine();
-            if (input.matches("[0-7]+")) { // Проверка, что введены только цифры
-                try {
-                    number = Integer.parseInt(input, 8);
-                    break;
+            if (input.matches("[0-7]+")) {
+                if (input.charAt(0) == '0' && input.length()>1){
+                    System.out.println("Число не может начинаться с нуля");
                 }
-                catch (Exception e) {
-                    System.out.println("Слишком большое число, введите заново");
+                else{
+                    try {
+                        number = Integer.parseInt(input, 8);
+                        break;
+                    }
+                    catch (Exception e) {
+                        System.out.println("Слишком большое число, введите заново");
+                    }
                 }
+
             } else {
                 System.out.println("Неверный ввод. Вводите только цифры.");
             }

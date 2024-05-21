@@ -18,21 +18,23 @@ public class Dec extends SystemNum {
         while (true) {
             String input = scanner.nextLine();
 
-            if (input.matches("\\d+")) {
-                try {
-                    number = Integer.parseInt(input, 10);
-                    if (String.valueOf(number).charAt(0) == '0' && String.valueOf(number).length()>1){
+                if (input.matches("\\d+")) {
+                    if (input.charAt(0) == '0' && input.length()>1){
                         System.out.println("Число не может начинаться с нуля");
-                        inputNum();
                     }
-                    break;
+                    else{
+                        try {
+                            number = Integer.parseInt(input, 10);
+                            break;
+                        }
+                        catch (Exception e) {
+                            System.out.println("Слишком большое число, введите заново");
+                        }
+                    }
+                } else {
+                    System.out.println("Неверный ввод. Вводите только цифры.");
                 }
-                catch (Exception e) {
-                    System.out.println("Слишком большое число, введите заново");
-                }
-            } else {
-                System.out.println("Неверный ввод. Вводите только цифры.");
-            }
+
         }
         return number;
     }

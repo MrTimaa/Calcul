@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public abstract class SystemNum {
     private String result;
+    private String operator;
 
     public String getResult() {
         return result;
